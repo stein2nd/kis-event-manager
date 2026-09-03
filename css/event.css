@@ -1,0 +1,993 @@
+/* =========================================================
+   イベント一覧ページ
+========================================================= */
+
+.kis-event-page {
+    width: min(1200px, calc(100vw - 60px));
+    max-width: none;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 50px 20px 80px;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    color: #222;
+}
+
+
+/* =========================================================
+   一覧ページ見出し
+========================================================= */
+
+.kis-event-header {
+    margin-bottom: 45px;
+}
+
+.kis-event-label {
+    margin-bottom: 8px;
+    color: #174a91;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .15em;
+}
+
+.kis-event-heading {
+    margin: 0 0 15px;
+    font-size: 42px;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.kis-event-description {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   一覧3列
+========================================================= */
+
+.kis-event-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+
+/* =========================================================
+   一覧カード
+========================================================= */
+
+.kis-event-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, .07);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.kis-event-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, .13);
+}
+
+
+/* =========================================================
+   一覧サムネイル
+========================================================= */
+
+.kis-event-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #eee;
+}
+
+.kis-event-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition:
+        transform .3s ease;
+}
+
+.kis-event-card:hover
+.kis-event-image img {
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   一覧カード本文
+========================================================= */
+
+.kis-event-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+}
+
+
+/* タグ */
+
+.kis-event-tag {
+    align-self: flex-start;
+    display: inline-block;
+
+    margin-bottom: 14px;
+    padding: 6px 12px;
+
+    background: #155da8;
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+
+    border-radius: 2px;
+}
+
+.kis-event-tag.archive {
+    background: #111;
+}
+
+
+/* 日時 */
+
+.kis-event-date {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* タイトル */
+
+.kis-event-title {
+    margin: 0 0 25px;
+
+    font-size: 18px;
+    line-height: 1.55;
+    font-weight: 700;
+}
+
+.kis-event-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ボタン */
+
+.kis-event-button-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.kis-event-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 17px;
+
+    background: #111;
+    color: #fff !important;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none !important;
+    border-radius: 3px;
+
+    transition:
+        background .2s ease;
+}
+
+.kis-event-button:hover {
+    background: #333;
+    color: #fff !important;
+}
+
+.kis-event-arrow {
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   個別イベント詳細ページ
+========================================================= */
+
+.single-kis_event .wp-site-blocks main,
+.single-kis_event main {
+    width: min(1200px, calc(100vw - 60px));
+    max-width: none;
+    margin: 0 auto;
+}
+
+
+/* 投稿タイトル周辺 */
+
+.single-kis_event h1.wp-block-post-title,
+.single-kis_event .wp-block-post-title {
+    max-width: 900px;
+    margin:
+        70px auto
+        35px;
+
+    font-size: 40px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   詳細本体
+========================================================= */
+
+.kis-event-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 0 90px;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    color: #222;
+}
+
+
+/* 種別タグ */
+
+.kis-event-detail-tag {
+    display: inline-block;
+
+    margin-bottom: 20px;
+    padding: 7px 14px;
+
+    background: #155da8;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+
+    border-radius: 2px;
+}
+
+.kis-event-detail-tag.archive {
+    background: #111;
+}
+
+
+/* =========================================================
+   詳細メイン画像
+========================================================= */
+
+.kis-event-detail-image {
+    margin-bottom: 40px;
+}
+
+.kis-event-detail-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   詳細情報ボックス
+========================================================= */
+
+.kis-event-detail-info {
+    margin-bottom: 50px;
+
+    border-top:
+        1px solid #ddd;
+
+    border-bottom:
+        1px solid #ddd;
+}
+
+.kis-event-detail-row {
+    display: grid;
+
+    grid-template-columns:
+        150px
+        1fr;
+
+    gap: 25px;
+
+    padding: 18px 10px;
+
+    border-bottom:
+        1px solid #eee;
+}
+
+.kis-event-detail-row:last-child {
+    border-bottom: none;
+}
+
+.kis-event-detail-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #444;
+}
+
+.kis-event-detail-value {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   詳細本文
+========================================================= */
+
+.kis-event-detail-content {
+    margin-top: 45px;
+    margin-bottom: 50px;
+
+    font-size: 16px;
+    line-height: 2;
+}
+
+.kis-event-detail-content h2 {
+    margin:
+        50px 0
+        20px;
+
+    padding-bottom:
+        12px;
+
+    font-size:
+        26px;
+
+    line-height:
+        1.5;
+
+    border-bottom:
+        2px solid #174a91;
+}
+
+.kis-event-detail-content h3 {
+    margin:
+        35px 0
+        15px;
+
+    font-size:
+        21px;
+
+    line-height:
+        1.6;
+}
+
+.kis-event-detail-content p {
+    margin:
+        0 0
+        20px;
+}
+
+.kis-event-detail-content ul,
+.kis-event-detail-content ol {
+    margin:
+        0 0
+        25px;
+
+    padding-left:
+        1.5em;
+}
+
+.kis-event-detail-content li {
+    margin-bottom:
+        8px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.kis-event-detail-cta {
+    display: flex;
+    justify-content: center;
+
+    margin:
+        55px 0
+        45px;
+}
+
+.kis-event-detail-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    min-width: 320px;
+
+    padding:
+        18px 35px;
+
+    background:
+        #111;
+
+    color:
+        #fff !important;
+
+    font-size:
+        16px;
+
+    font-weight:
+        700;
+
+    text-decoration:
+        none !important;
+
+    border-radius:
+        4px;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+.kis-event-detail-button:hover {
+    background:
+        #333;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   一覧へ戻る
+========================================================= */
+
+.kis-event-detail-back {
+    margin-top: 40px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid #ddd;
+}
+
+.kis-event-detail-back a {
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.kis-event-detail-back a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   テーマ側の不要表示を抑える
+========================================================= */
+
+/* テーマによって表示される投稿メタ */
+.single-kis_event .wp-block-post-date,
+.single-kis_event .wp-block-post-author,
+.single-kis_event .wp-block-post-terms {
+    display: none;
+}
+
+
+/* 個別ページでテーマ側がアイキャッチを出す場合 */
+.single-kis_event .wp-block-post-featured-image {
+    display: none;
+}
+
+
+/* コメント */
+.single-kis_event .wp-block-comments,
+.single-kis_event #comments {
+    display: none;
+}
+
+
+/* =========================================================
+   タブレット
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    .kis-event-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .single-kis_event h1.wp-block-post-title,
+    .single-kis_event .wp-block-post-title {
+        font-size: 34px;
+    }
+}
+
+
+/* =========================================================
+   スマートフォン
+========================================================= */
+
+@media screen and (max-width: 600px) {
+
+    .kis-event-page {
+        width: calc(100vw - 20px);
+        padding: 35px 10px 60px;
+    }
+
+    .kis-event-heading {
+        font-size: 32px;
+    }
+
+    .kis-event-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+
+    .single-kis_event .wp-site-blocks main,
+    .single-kis_event main {
+        width: calc(100vw - 30px);
+    }
+
+
+    .single-kis_event h1.wp-block-post-title,
+    .single-kis_event .wp-block-post-title {
+        margin-top: 40px;
+        font-size: 28px;
+    }
+
+
+    .kis-event-detail {
+        width: 100%;
+        padding-bottom: 60px;
+    }
+
+
+    .kis-event-detail-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+
+    .kis-event-detail-button {
+        width: 100%;
+        min-width: 0;
+
+        padding:
+            16px 20px;
+    }
+}
+/* =========================================================
+   イベント専用詳細テンプレート
+========================================================= */
+
+.kis-single-event-page {
+    width: 100%;
+    padding: 70px 20px 100px;
+}
+
+.kis-single-event-inner {
+    width: min(900px, 100%);
+    margin: 0 auto;
+}
+
+.kis-single-event-label {
+    margin-bottom: 12px;
+
+    color: #174a91;
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .15em;
+}
+
+.kis-single-event-title {
+    margin:
+        0 0
+        25px;
+
+    font-size: 40px;
+    line-height: 1.45;
+    font-weight: 700;
+}
+
+
+/* スマートフォン */
+
+@media screen and (max-width: 600px) {
+
+    .kis-single-event-page {
+        padding:
+            40px 15px
+            70px;
+    }
+
+    .kis-single-event-title {
+        font-size: 28px;
+    }
+
+}
+/* =========================================================
+   詳細ページ 仕上げ調整
+========================================================= */
+
+.kis-single-event-inner {
+    width: min(1000px, 100%);
+}
+
+.kis-event-detail-image {
+    margin-top: 10px;
+    margin-bottom: 45px;
+}
+
+.kis-event-detail-image img {
+    width: 100%;
+}
+
+.kis-event-detail-content {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.kis-event-detail-cta {
+    margin-top: 60px;
+}
+
+.kis-event-detail-back {
+    margin-bottom: 80px;
+}
+
+.kis-single-event-page {
+    padding-bottom: 140px;
+}
+/* =========================================================
+   アーカイブ視聴申込フォーム
+   KISコーポレートサイト風
+   ========================================================= */
+
+
+/* フォーム全体 */
+
+.archive-form {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 20px 0 80px;
+}
+
+
+/* フォーム内タイトル */
+
+.archive-form h2 {
+    margin: 0 0 24px;
+    font-size: 32px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #111;
+}
+
+
+/* 説明文 */
+
+.archive-form > p {
+    margin-bottom: 40px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #444;
+}
+
+
+/* =========================================================
+   視聴希望アーカイブ
+   ========================================================= */
+
+.kis-archive-request-target {
+    margin: 0 0 45px;
+    padding: 24px 28px;
+    border-left: 4px solid #174a91;
+    background: #f5f7fa;
+}
+
+.kis-archive-request-target-label {
+    margin-bottom: 8px;
+    color: #174a91;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+}
+
+.kis-archive-request-target-title {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 700;
+    color: #111;
+}
+
+
+/* =========================================================
+   各入力項目
+   ========================================================= */
+
+.archive-form-item {
+    margin-bottom: 30px;
+}
+
+.archive-form-item > label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+}
+
+
+/* 必須 */
+
+.archive-form .required {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 7px;
+    background: #c9302c;
+    color: #fff;
+    font-size: 11px;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+
+/* テキスト・メール・電話 */
+
+.archive-form input[type="text"],
+.archive-form input[type="email"],
+.archive-form input[type="tel"] {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 15px;
+    border: 1px solid #c9ced6;
+    border-radius: 0;
+    background: #fff;
+    color: #222;
+    font-size: 16px;
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+/* 入力中 */
+
+.archive-form input[type="text"]:focus,
+.archive-form input[type="email"]:focus,
+.archive-form input[type="tel"]:focus {
+    border-color: #174a91;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(23, 74, 145, .10);
+}
+
+
+/* =========================================================
+   個人情報
+   ========================================================= */
+
+.archive-form-item p {
+    margin: 0 0 14px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.archive-form input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: -3px;
+}
+
+.archive-form .mwform-checkbox-field label {
+    font-size: 14px;
+    line-height: 1.8;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   エラーメッセージ
+   ========================================================= */
+
+.archive-form .error {
+    display: block;
+    margin-top: 7px;
+    color: #c9302c;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* イベント取得エラー */
+
+.kis-archive-request-error {
+    margin-bottom: 35px;
+    padding: 20px 24px;
+    border: 1px solid #d7dce3;
+    background: #f8f9fa;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   ボタン
+   ========================================================= */
+
+.archive-form-button {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.archive-form input[type="submit"] {
+    min-width: 300px;
+    min-height: 58px;
+    padding: 14px 40px;
+    border: 1px solid #174a91;
+    border-radius: 0;
+    background: #174a91;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.archive-form input[type="submit"]:hover {
+    background: #fff;
+    color: #174a91;
+}
+
+
+/* MW WP Form 確認画面 */
+
+.archive-form input[name="submitBack"] {
+    margin-right: 12px;
+    border-color: #777;
+    background: #777;
+}
+
+.archive-form input[name="submitBack"]:hover {
+    background: #fff;
+    color: #555;
+}
+
+
+/* =========================================================
+   完了画面
+   ========================================================= */
+
+.archive-form-complete {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 50px 0 100px;
+    text-align: center;
+}
+
+.archive-form-complete h2 {
+    margin: 0 0 28px;
+    font-size: 32px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #111;
+}
+
+.archive-form-complete h2::before {
+    content: "THANK YOU";
+    display: block;
+    margin-bottom: 10px;
+    color: #174a91;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .15em;
+}
+
+.archive-form-complete p {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #444;
+}
+
+
+/* =========================================================
+   スマートフォン
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+
+    .archive-form {
+        padding: 10px 0 60px;
+    }
+
+    .archive-form h2 {
+        font-size: 25px;
+    }
+
+    .kis-archive-request-target {
+        padding: 20px;
+        margin-bottom: 35px;
+    }
+
+    .kis-archive-request-target-title {
+        font-size: 16px;
+    }
+
+    .archive-form-item {
+        margin-bottom: 25px;
+    }
+
+    .archive-form input[type="submit"] {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .archive-form input[name="submitBack"] {
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+
+    .archive-form-complete {
+        padding: 30px 0 70px;
+        text-align: left;
+    }
+
+    .archive-form-complete h2 {
+        font-size: 25px;
+    }
+
+}
+/* 終了イベント */
+.kis-event-tag.ended,
+.kis-event-detail-tag.ended {
+    background: #777;
+    color: #fff;
+}
